@@ -1,0 +1,112 @@
+﻿@model QuanLyDatNen.Models.Nen
+@{
+    Layout = null;
+}
+<div class="modal-content">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box" style="padding:10px 10px">
+                <h4 class="page-title">Thông tin nền</h4>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    @using (@Html.BeginForm("AddOrUpdate", "Home", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        @Html.HiddenFor(model => model.Id)
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">̀Tên nền<span class="text-danger">*</span></label>
+                            @Html.EditorFor(model => model.TenNen, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Diện tích<span class="text-danger">*</span></label>
+                            @Html.EditorFor(model => model.DienTich, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Giá trị<span class="text-danger">*</span></label>
+                            @Html.EditorFor(model => model.GiaTri, new { htmlAttributes = new {@type="number", @class = "form-control" } })
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Địa chỉ<span class="text-danger">*</span></label>
+                            @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tasksTitle">Tình trạng</label>
+                                    @Html.DropDownListFor(model => model.TinhTrang, (SelectList)ViewBag.TinhTrang, new {@id="TinhTrang", @class = "form-control " })
+                                </div>
+                            </div>                                  
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Ghi chú<span class="text-danger">*</span></label>
+                                    @Html.EditorFor(model => model.GhiChu, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Họ và tên<span class="text-danger">*</span></label>
+                                    @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>                                   
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">CMND<span class="text-danger">*</span></label>
+                                    @Html.EditorFor(model => model.CMND, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label" style="display: flex; flex-direction: column">Ngày ký</label>
+                                    @Html.EditorFor(model => model.NgayKy, new { htmlAttributes = new { @id = "flatpickr01", @class = "form-control", style = "width: 100%" } })
+                                </div>
+                            </div>                                    <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Số điện thoại<span class="text-danger">*</span></label>
+                                    @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group text-right mb-0">
+                            <button class="btn btn-primary" type="submit">Lưu</button>
+                            <button type="button" data-dismiss="modal" class="btn btn-secondary">Đóng</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $("document").ready(function () {
+        $('#TinhTrang').val('@Model.TinhTrang');
+    });
+    flatpickr("#flatpickr01", {
+        dateFormat: "m/d/Y",
+    })
+    $("#HoTen, #flatpickr01, #CMND, #SDT").prop("disabled", true);
+    $("#TinhTrang").change(function () {
+        console.log(this.value)
+        if (this.value == 0) {
+            $("#HoTen, #flatpickr01, #CMND, #SDT").prop("disabled", true);
+        } else {
+            $("#HoTen, #flatpickr01, #CMND, #SDT").prop("disabled", false);
+        }
+    });
+</script>
