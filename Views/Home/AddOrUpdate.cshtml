@@ -23,19 +23,19 @@
 
                         @Html.HiddenFor(model => model.Id)
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">̀Tên nền<span class="text-danger">*</span></label>
+                            <label for="recipient-name" class="col-form-label">̀Tên nền</label>
                             @Html.EditorFor(model => model.TenNen, new { htmlAttributes = new { @class = "form-control" } })
                         </div>
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Diện tích<span class="text-danger">*</span></label>
+                            <label for="recipient-name" class="col-form-label">Diện tích</label>
                             @Html.EditorFor(model => model.DienTich, new { htmlAttributes = new { @class = "form-control" } })
                         </div>
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Giá trị<span class="text-danger">*</span></label>
-                            @Html.EditorFor(model => model.GiaTri, new { htmlAttributes = new {@type="number", @class = "form-control" } })
+                            <label for="recipient-name" class="col-form-label">Giá trị<span class="text-danger">(Tỷ đồng)</span></label>
+                            @Html.EditorFor(model => model.GiaTri, new { htmlAttributes = new { @class = "form-control" } })
                         </div>
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Địa chỉ<span class="text-danger">*</span></label>
+                            <label for="recipient-name" class="col-form-label">Địa chỉ</label>
                             @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
                         </div>
                         <div class="row">
@@ -47,7 +47,7 @@
                             </div>                                  
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="recipient-name" class="col-form-label">Ghi chú<span class="text-danger">*</span></label>
+                                    <label for="recipient-name" class="col-form-label">Ghi chú</label>
                                     @Html.EditorFor(model => model.GhiChu, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
                             </div>
@@ -56,14 +56,14 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="recipient-name" class="col-form-label">Họ và tên<span class="text-danger">*</span></label>
+                                    <label for="recipient-name" class="col-form-label">Họ và tên</label>
                                     @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
                             </div>                                   
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label for="recipient-name" class="col-form-label">CMND<span class="text-danger">*</span></label>
+                                    <label for="recipient-name" class="col-form-label">CMND</label>
                                     @Html.EditorFor(model => model.CMND, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
                             </div>
@@ -76,7 +76,7 @@
                                 </div>
                             </div>                                    <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="recipient-name" class="col-form-label">Số điện thoại<span class="text-danger">*</span></label>
+                                    <label for="recipient-name" class="col-form-label">Số điện thoại</label>
                                     @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
                             </div>
@@ -94,19 +94,27 @@
 </div>
 
 <script>
-    $("document").ready(function () {
+    $(document).ready(function () {
         $('#TinhTrang').val('@Model.TinhTrang');
+
+        $("#TinhTrang").change(function () {
+            if (this.value == 0) {
+                $("#HoTen, #flatpickr01, #CMND, #SDT").prop("disabled", true);
+                $("#HoTen, #CMND, #SDT").val("");
+            } else {
+                $("#HoTen, #flatpickr01, #CMND, #SDT").prop("disabled", false);
+            }
+        });
+        if ($('#TinhTrang').val() == 1) {
+            $("#HoTen, #flatpickr01, #CMND, #SDT").prop("disabled", false);
+        }
+        else {
+            $("#HoTen, #flatpickr01, #CMND, #SDT").prop("disabled", true);
+            $("#HoTen, #CMND, #SDT").val("");
+        }
     });
     flatpickr("#flatpickr01", {
         dateFormat: "m/d/Y",
     })
-    $("#HoTen, #flatpickr01, #CMND, #SDT").prop("disabled", true);
-    $("#TinhTrang").change(function () {
-        console.log(this.value)
-        if (this.value == 0) {
-            $("#HoTen, #flatpickr01, #CMND, #SDT").prop("disabled", true);
-        } else {
-            $("#HoTen, #flatpickr01, #CMND, #SDT").prop("disabled", false);
-        }
-    });
+
 </script>

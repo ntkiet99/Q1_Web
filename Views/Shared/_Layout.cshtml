@@ -11,13 +11,13 @@
     <!-- GOOGLE FONT -->
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600" rel="stylesheet">
     <!-- BEGIN PLUGINS STYLES -->
-    <link rel="stylesheet" href="assets/vendor/open-iconic/font/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="assets/vendor/fontawesome/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="assets/vendor/flatpickr/flatpickr.min.css">
+    <link rel="stylesheet" href="~/assets/vendor/open-iconic/font/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/vendor/fontawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/assets/vendor/flatpickr/flatpickr.min.css">
     <!-- BEGIN THEME STYLES -->
-    <link rel="stylesheet" href="assets/stylesheets/theme.min.css" data-skin="default">
-    <link rel="stylesheet" href="assets/stylesheets/theme-dark.min.css" data-skin="dark">
-    <link rel="stylesheet" href="assets/stylesheets/custom.css">
+    <link rel="stylesheet" href="~/assets/stylesheets/theme.min.css" data-skin="default">
+    <link rel="stylesheet" href="~/assets/stylesheets/theme-dark.min.css" data-skin="dark">
+    <link rel="stylesheet" href="~/assets/stylesheets/custom.css">
     <script>
         var skin = localStorage.getItem('skin') || 'default';
         var isCompact = JSON.parse(localStorage.getItem('hasCompactMenu'));
@@ -439,17 +439,17 @@
         </main>
     </div>
 
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/popper.js/umd/popper.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/vendor/pace-progress/pace.min.js"></script>
-    <script src="assets/vendor/stacked-menu/js/stacked-menu.min.js"></script>
-    <script src="assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="assets/vendor/flatpickr/flatpickr.min.js"></script>
-    <script src="assets/vendor/easy-pie-chart/jquery.easypiechart.min.js"></script>
-    <script src="assets/vendor/chart.js/Chart.min.js"></script>
-    <script src="assets/javascript/theme.min.js"></script>
-    <script src="assets/javascript/pages/dashboard-demo.js"></script>
+    <script src="~/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/assets/vendor/popper.js/umd/popper.min.js"></script>
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/assets/vendor/pace-progress/pace.min.js"></script>
+    <script src="~/assets/vendor/stacked-menu/js/stacked-menu.min.js"></script>
+    <script src="~/assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="~/assets/vendor/flatpickr/flatpickr.min.js"></script>
+    <script src="~/assets/vendor/easy-pie-chart/jquery.easypiechart.min.js"></script>
+    <script src="~/assets/vendor/chart.js/Chart.min.js"></script>
+    <script src="~/assets/javascript/theme.min.js"></script>
+    <script src="~/assets/javascript/pages/dashboard-demo.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
